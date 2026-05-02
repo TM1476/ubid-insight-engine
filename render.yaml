@@ -11,9 +11,10 @@ services:
         value: "3.10.0"
 
   # 2. The React Frontend (Static Site)
-  - type: static
+  - type: web
     name: ubid-insight-dashboard
     env: static
+    static: true
     buildCommand: "cd frontend && npm install && npm run build"
     publishPath: "frontend/build"
     routes:
