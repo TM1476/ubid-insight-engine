@@ -8,13 +8,12 @@ services:
     startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10.0
+        value: "3.10.0"
 
   # 2. The React Frontend (Static Site)
-  - type: web
+  - type: static
     name: ubid-insight-dashboard
     env: static
-    static: true
     buildCommand: "cd frontend && npm install && npm run build"
     publishPath: "frontend/build"
     routes:
