@@ -1,5 +1,5 @@
 services:
-  # 1. The Python Backend
+  # 1. The Python Backend (FastAPI)
   - type: web
     name: ubid-backend-api
     env: python
@@ -9,10 +9,11 @@ services:
       - key: PYTHON_VERSION
         value: 3.10.0
 
-  # 2. The React Frontend
-  - type: static
+  # 2. The React Frontend (Static Site)
+  - type: web
     name: ubid-insight-dashboard
     env: static
+    static: true
     buildCommand: cd frontend && npm install && npm run build
     publishPath: frontend/build
     routes:
