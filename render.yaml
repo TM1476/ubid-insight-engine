@@ -1,15 +1,15 @@
 services:
-  # 1. The Python Backend
+  # 1. The Python Backend (FastAPI)
   - type: web
     name: ubid-backend-api
     env: python
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.0
 
-  # 2. The React Frontend
+  # 2. The React Frontend (Static Site)
   - type: web
     name: ubid-insight-dashboard
     env: static
