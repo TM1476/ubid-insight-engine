@@ -1,10 +1,11 @@
+version: 1
 services:
   # 1. The Python Backend (FastAPI)
   - type: web
     name: ubid-backend-api
     env: python
-    buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.0
@@ -14,9 +15,9 @@ services:
     name: ubid-insight-dashboard
     env: static
     static: true
-    buildCommand: cd frontend && npm install && npm run build
-    publishPath: frontend/build
+    buildCommand: "cd frontend && npm install && npm run build"
+    publishPath: "frontend/build"
     routes:
       - type: rewrite
-        source: /*
-        destination: /index.html
+        source: "/*"
+        destination: "/index.html"
